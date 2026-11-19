@@ -1,0 +1,87 @@
+:root {
+  --bg: #060d1a;
+  --bg2: #0a1628;
+  --card: rgba(255, 255, 255, 0.055);
+  --card-border: rgba(140, 200, 255, 0.16);
+  --text: #e8f2fc;
+  --muted: #8fb3d9;
+  --accent: #22d3ee;
+  --accent2: #34d399;
+  --warn: #fbbf24;
+  --danger: #f87171;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  margin: 0; color: var(--text);
+  background:
+    radial-gradient(900px 500px at 15% -10%, rgba(34, 211, 238, 0.14), transparent 60%),
+    radial-gradient(800px 500px at 90% 0%, rgba(52, 211, 153, 0.10), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--bg2));
+  min-height: 100vh;
+}
+.wrap { max-width: 1380px; margin: 0 auto; padding: 22px 18px 10px; }
+
+/* ---------- en-tête ---------- */
+.hero { text-align: center; padding: 26px 10px 8px; }
+.hero .kicker { color: var(--accent); letter-spacing: 0.28em; font-size: 0.78rem; font-weight: 700; }
+.hero h1 {
+  margin: 8px 0 6px; font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.15;
+  background: linear-gradient(90deg, #fff, #7dd3fc 55%, #34d399);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero p { color: var(--muted); margin: 0 auto; max-width: 760px; font-size: 1rem; }
+.badges { margin-top: 12px; }
+.badge { display: inline-block; border: 1px solid var(--card-border); background: var(--card);
+  border-radius: 999px; padding: 4px 14px; font-size: 0.8rem; margin: 3px; color: var(--text); }
+
+/* ---------- cartes métriques ---------- */
+.metrics { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 18px 0; }
+.metric { background: var(--card); border: 1px solid var(--card-border); border-radius: 14px;
+  padding: 14px 12px; text-align: center; backdrop-filter: blur(8px); }
+.metric .lab { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.metric .val { font-size: 1.5rem; font-weight: 800; margin: 4px 0 2px; }
+.metric .sub { font-size: 0.78rem; color: var(--muted); }
+.metric.cyan .val { color: var(--accent); }
+.metric.green .val { color: var(--accent2); }
+.metric.amber .val { color: var(--warn); }
+.metric.red .val { color: var(--danger); }
+@media (max-width: 1000px) { .metrics { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---------- bilan énergétique ---------- */
+.budget { background: var(--card); border: 1px solid var(--card-border); border-radius: 14px;
+  padding: 14px 16px; margin-bottom: 16px; }
+.budget .row { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; }
+.bar { display: flex; height: 16px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,.07); }
+.bar .refl { background: linear-gradient(90deg, #f87171, #ef4444); }
+.bar .trans { background: linear-gradient(90deg, #22d3ee, #34d399); }
+
+/* ---------- mise en page ---------- */
+main { display: flex; flex-wrap: wrap; gap: 16px; }
+.panel { background: var(--card); border: 1px solid var(--card-border); border-radius: 16px;
+  padding: 16px; backdrop-filter: blur(8px); }
+#controls { flex: 0 0 320px; }
+#plots { flex: 1 1 760px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 1000px) { #plots { grid-template-columns: 1fr; } }
+h3 { margin: 0 0 10px; font-size: 0.98rem; color: var(--text); }
+h3 .dot { color: var(--accent); }
+
+/* ---------- réglages ---------- */
+.presets { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 6px; }
+button { padding: 8px 10px; border-radius: 10px; border: 1px solid var(--card-border);
+  background: rgba(34, 211, 238, 0.10); color: var(--text); font-weight: 700; cursor: pointer;
+  transition: background 0.15s, transform 0.1s; }
+button:hover { background: rgba(34, 211, 238, 0.25); }
+button:active { transform: scale(0.97); }
+button.wide { width: 100%; margin-top: 10px; }
+label { display: block; font-weight: 700; margin-top: 14px; font-size: 0.88rem; }
+label .val { color: var(--accent); }
+input[type="range"] { width: 100%; accent-color: var(--accent); }
+input[type="number"] { width: 100%; padding: 8px; margin-top: 5px; border-radius: 10px;
+  border: 1px solid var(--card-border); background: rgba(0,0,0,.25); color: var(--text); }
+.readouts { margin-top: 14px; font-size: 0.9rem; line-height: 1.9; background: rgba(0,0,0,.22);
+  border: 1px solid var(--card-border); border-radius: 12px; padding: 10px 12px; }
+.readouts b { color: var(--accent2); }
+
+canvas { width: 100%; height: 270px; display: block; border-radius: 10px; background: rgba(0,0,0,.18); }
+footer { text-align: center; color: var(--muted); font-size: 0.82rem; padding: 16px; }
